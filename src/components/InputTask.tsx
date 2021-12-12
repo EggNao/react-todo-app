@@ -12,15 +12,16 @@ const InputTask = () => {
       }}
       noValidate
       autoComplete="off"
+      style={{display: 'flex', justifyContent: 'center',alignItems: 'center'}}
     >
       <TextField required id="outlined-required" label="Task" defaultValue="" />
-      <Stack spacing={2} direction="row">
-        <Button variant="contained" style={{ textTransform: 'none' }}>
+
+      <Stack spacing={2} direction="row" >
+        <Button variant="contained" style={{ textTransform: 'none', height: '30px' }}>
           Save
         </Button>
       </Stack>
     </Box>
   )
 }
-
 export default InputTask

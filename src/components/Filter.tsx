@@ -1,30 +1,23 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import Tab from '@mui/material/Tab'
-import TabContext from '@mui/lab/TabContext'
-import TabList from '@mui/lab/TabList'
+import Tabs from '@mui/material/Tabs';
 
 const Filter = () => {
-  const [value, setValue] = React.useState('1')
+    const [value, setValue] = React.useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue)
-  }
-
-  return (
-    <Box sx={{ width: '100%', typography: 'body1' }}>
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <div style={{ margin: 'auto' }}>
-              <Tab label="all" value="1" style={{ textTransform: 'none' }} />
-              <Tab label="todo" value="2" style={{ textTransform: 'none' }} />
-              <Tab label="done" value="3" style={{ textTransform: 'none' }} />
-            </div>
-          </TabList>
-        </Box>
-      </TabContext>
-    </Box>
-  )
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+      setValue(newValue);
+    };
+  
+    return (
+      <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
+        <Tabs value={value} onChange={handleChange} centered>
+          <Tab label="All" style={{ textTransform: 'none' }}/>
+          <Tab label="Todo" style={{ textTransform: 'none' }}/>
+          <Tab label="Done" style={{ textTransform: 'none' }}/>
+        </Tabs>
+      </Box>
+    );
 }
 export default Filter

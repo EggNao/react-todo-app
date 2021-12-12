@@ -3,3 +3,7 @@ export type todo = {
   text: string
   done: boolean
 }
+
+export type todoListProps = {
+  todoArray: todo[]
+}

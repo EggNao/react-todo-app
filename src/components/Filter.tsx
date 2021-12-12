@@ -17,9 +17,9 @@ const Filter = () => {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             <div style={{ margin: 'auto' }}>
-              <Tab label="all" value="1" />
-              <Tab label="todo" value="2" />
-              <Tab label="done" value="3" />
+              <Tab label="all" value="1" style={{ textTransform: 'none' }} />
+              <Tab label="todo" value="2" style={{ textTransform: 'none' }} />
+              <Tab label="done" value="3" style={{ textTransform: 'none' }} />
             </div>
           </TabList>
         </Box>

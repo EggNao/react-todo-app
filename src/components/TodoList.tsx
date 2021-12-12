@@ -56,7 +56,11 @@ const TodoList = () => {
                   inputProps={{ 'aria-labelledby': labelId }}
                 />
               </ListItemIcon>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+              <ListItemText
+                id={labelId}
+                primary={`Line item ${value + 1}`}
+                style={{ textTransform: 'none' }}
+              />
             </ListItemButton>
           </ListItem>
         )

@@ -1,5 +1,7 @@
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
+import Stack from '@mui/material/Stack'
+import Button from '@mui/material/Button'
 
 const InputTask = () => {
   return (
@@ -10,16 +12,13 @@ const InputTask = () => {
       }}
       noValidate
       autoComplete="off"
-      style={{ margin: 'auto' }}
     >
-      <div>
-        <TextField
-          required
-          id="outlined-required"
-          label="Task"
-          defaultValue=""
-        />
-      </div>
+      <TextField required id="outlined-required" label="Task" defaultValue="" />
+      <Stack spacing={2} direction="row">
+        <Button variant="contained" style={{ textTransform: 'none' }}>
+          Save
+        </Button>
+      </Stack>
     </Box>
   )
 }

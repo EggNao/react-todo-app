@@ -13,7 +13,9 @@ const Header = () => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               To Do App!!
             </Typography>
-            <Button color="inherit">Logout</Button>
+            <Button color="inherit" style={{ textTransform: 'none' }}>
+              Logout
+            </Button>
           </Toolbar>
         </AppBar>
       </Box>

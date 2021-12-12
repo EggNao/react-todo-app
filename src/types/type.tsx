@@ -1,5 +1,5 @@
 export type todo = () => {
-  key: string
+  key: number
   text: string
   done: boolean
 }

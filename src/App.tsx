@@ -15,13 +15,15 @@ function App() {
   const [count, setCount] = useState<number>(0)
 
   const onClick = () => {
-    setCount(count + 1)
-    console.log(count)
-    console.log(TaskTexts)
-    const Items_cp = Items
-    Items_cp.push({ count: count, text: TaskTexts, done: false })
-    setItems(Items_cp)
-    console.log(Items)
+    if (TaskTexts !== '') {
+      setCount(count + 1)
+      console.log(count)
+      console.log(TaskTexts)
+      const Items_cp = Items
+      Items_cp.push({ count: count, text: TaskTexts, done: false })
+      setItems(Items_cp)
+      console.log(Items)
+    }
 
     setTaskTexts('')
   }

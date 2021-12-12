@@ -1,11 +1,17 @@
 import React from 'react'
 import './App.css'
-import TaskInput from './components/TaskInput'
+import TodoList from './components/TodoList'
+import Header from './components/Header'
+import Filter from './components/Filter'
+import InputTask from './components/InputTask'
 
 function App() {
   return (
     <div className="App">
-      <TaskInput />
+      <Header />
+      <InputTask />
+      <Filter />
+      <TodoList />
     </div>
   )
 }

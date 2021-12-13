@@ -9,9 +9,9 @@ import {
   IconButton,
 } from '@mui/material'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { todo } from '../types/type'
+import { todoListProps } from '../types/type'
 
-const TodoList = () => {
+const TodoList: React.FC<todoListProps> = (props) => {
   const [checked, setChecked] = React.useState([0])
 
   const handleToggle = (value: number) => () => {
@@ -32,12 +32,12 @@ const TodoList = () => {
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       style={{ margin: 'auto' }}
     >
-      {[0, 1, 2, 3].map((value) => {
+      {props.todoArray.map((value) => {
         const labelId = `checkbox-list-label-${value}`
 
         return (
           <ListItem
-            key={value}
+            key={value.count}
             secondaryAction={
               <IconButton edge="end" aria-label="comments">
                 <DeleteIcon />
@@ -47,13 +47,13 @@ const TodoList = () => {
           >
             <ListItemButton
               role={undefined}
-              onClick={handleToggle(value)}
+              onClick={handleToggle(value.count)}
               dense
             >
               <ListItemIcon>
                 <Checkbox
                   edge="start"
-                  checked={checked.indexOf(value) !== -1}
+                  // checked={checked.indexOf(value.count) !== -1}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ 'aria-labelledby': labelId }}
@@ -61,7 +61,7 @@ const TodoList = () => {
               </ListItemIcon>
               <ListItemText
                 id={labelId}
-                primary={`Line item ${value + 1}`}
+                primary={value.text}
                 style={{ textTransform: 'none' }}
               />
             </ListItemButton>

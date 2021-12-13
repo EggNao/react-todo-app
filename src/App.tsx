@@ -17,8 +17,6 @@ function App() {
   const onClick = () => {
     if (TaskTexts !== '') {
       setCount(count + 1)
-      console.log(count)
-      console.log(TaskTexts)
       const Items_cp = Items
       Items_cp.push({ count: count, text: TaskTexts, done: false })
       setItems(Items_cp)
@@ -69,7 +67,7 @@ function App() {
         </Stack>
       </Box>
       <Filter />
-      <TodoList />
+      <TodoList todoArray={Items} />
       <Loading />
     </div>
   )

@@ -3,16 +3,35 @@ import TodoList from './components/TodoList'
 import Header from './components/Header'
 import Filter from './components/Filter'
 import Loading from './components/Loading'
+import Login from './components/Login'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import { todo } from './types/type'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './firebase'
 
 function App() {
   const [Items, setItems] = useState<todo[]>([])
   const [TaskTexts, setTaskTexts] = useState<string>('')
   const [count, setCount] = useState<number>(0)
+  const [isLogin, setIsLogin] = useState<boolean>(false)
+
+  const getUser = () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid
+        setIsLogin(true)
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    })
+  }
 
   const onClick = () => {
     if (TaskTexts !== '') {
@@ -69,6 +88,7 @@ function App() {
       <Filter />
       <TodoList todoArray={Items} />
       <Loading />
+      <Login />
     </div>
   )
 }

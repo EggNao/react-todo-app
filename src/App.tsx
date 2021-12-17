@@ -18,20 +18,21 @@ function App() {
   const [count, setCount] = useState<number>(0)
   const [isLogin, setIsLogin] = useState<boolean>(false)
 
-  const getUser = () => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid
-        setIsLogin(true)
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
-    })
-  }
+  // const getUser = () => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       // User is signed in, see docs for a list of available properties
+  //       // https://firebase.google.com/docs/reference/js/firebase.User
+  //       const uid = user.uid
+  //       console.log(uid)
+
+  //       // ...
+  //     } else {
+  //       // User is signed out
+  //       // ...
+  //     }
+  //   })
+  // }
 
   const onClick = () => {
     if (TaskTexts !== '') {
@@ -50,47 +51,63 @@ function App() {
     setTaskTexts(event.target.value)
   }
 
-  return (
-    <div className="App">
-      <Header />
-      <Box
-        component="form"
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
-        }}
-        noValidate
-        autoComplete="off"
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <TextField
-          required
-          id="outlined-required"
-          label="Task"
-          defaultValue=""
-          onChange={handleChange}
-          value={TaskTexts}
-        />
+  const page = () => {
+    if (isLogin) {
+      console.log('Login')
 
-        <Stack spacing={2} direction="row">
-          <Button
-            variant="contained"
-            style={{ textTransform: 'none', height: '30px' }}
-            onClick={onClick}
+      return (
+        <div>
+          <Header setIsLogin={setIsLogin} isLogin={isLogin} />
+
+          <Box
+            component="form"
+            sx={{
+              '& .MuiTextField-root': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
           >
-            Save
-          </Button>
-        </Stack>
-      </Box>
-      <Filter />
-      <TodoList todoArray={Items} />
-      <Loading />
-      <Login />
-    </div>
-  )
+            <TextField
+              required
+              id="outlined-required"
+              label="Task"
+              defaultValue=""
+              onChange={handleChange}
+              value={TaskTexts}
+            />
+
+            <Stack spacing={2} direction="row">
+              <Button
+                variant="contained"
+                style={{ textTransform: 'none', height: '30px' }}
+                onClick={onClick}
+              >
+                Save
+              </Button>
+            </Stack>
+          </Box>
+          <Filter />
+          <TodoList todoArray={Items} />
+        </div>
+      )
+    } else {
+      console.log('not Login')
+
+      return (
+        <div>
+          <Header setIsLogin={setIsLogin} isLogin={isLogin} />
+          <Login setIsLogin={setIsLogin} />
+        </div>
+      )
+    }
+  }
+
+  return <div className="App">{page()}</div>
 }
 
 export default App

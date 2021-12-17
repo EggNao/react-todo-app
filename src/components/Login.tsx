@@ -9,11 +9,13 @@ import {
 } from '@mui/material'
 import { signInWithPopup } from 'firebase/auth'
 import { auth, provider } from '../firebase'
+import { signProps } from '../types/type'
 
-const Login = () => {
+const Login: React.FC<signProps> = (prop) => {
   const signup = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
+        prop.setIsLogin(true)
         console.log('success Login')
       })
       .catch((error) => {
@@ -41,12 +43,17 @@ const Login = () => {
             Login
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            React × Material UI × Firebase
+            Authenticationでチュートリアル。google認証で簡単にログインできます。
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" variant="text" onClick={signup}>
+          <Button
+            size="small"
+            variant="contained"
+            onClick={signup}
+            style={{ textTransform: 'none' }}
+          >
             Login
           </Button>
         </CardActions>

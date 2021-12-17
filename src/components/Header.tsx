@@ -1,13 +1,15 @@
 import React from 'react'
 import { AppBar, Box, Toolbar, Typography, Button } from '@mui/material'
 import { getAuth, signOut } from 'firebase/auth'
+import { headerProps } from '../types/type'
 
-const Header = () => {
+const Header: React.FC<headerProps> = (prop) => {
   const signout = () => {
     const auth = getAuth()
     signOut(auth)
       .then(() => {
         // Sign-out successful.
+        prop.setIsLogin(false)
       })
       .catch((error) => {
         // An error happened.
@@ -19,11 +21,12 @@ const Header = () => {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              To Do App!!
+              React ToDo App!!
             </Typography>
             <Button
               color="inherit"
-              style={{ textTransform: 'none' }}
+              variant="outlined"
+              style={{ textTransform: 'none', display: prop.isLogin ? '' : 'none' }}
               onClick={signout}
             >
               Logout

@@ -26,7 +26,10 @@ const Header: React.FC<headerProps> = (prop) => {
             <Button
               color="inherit"
               variant="outlined"
-              style={{ textTransform: 'none', display: prop.isLogin ? '' : 'none' }}
+              style={{
+                textTransform: 'none',
+                display: prop.isLogin ? '' : 'none',
+              }}
               onClick={signout}
             >
               Logout

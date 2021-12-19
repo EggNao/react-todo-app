@@ -21,7 +21,6 @@ function App() {
       setItems(Items_cp)
       console.log(Items)
     }
-
     setTaskTexts('')
   }
   const handleChange = (

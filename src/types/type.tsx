@@ -17,3 +17,12 @@ export type headerProps = {
   setIsLogin: Function
   isLogin: boolean
 }
+
+export type inputTaskProps = {
+  setId: Function
+  id: string
+  setCount: Function
+  count: number
+  Items: todo[]
+  setItems: Function
+}

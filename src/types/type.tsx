@@ -27,3 +27,7 @@ export type inputTaskProps = {
   Items: todo[]
   setItems: Function
 }
+export type filterProps = {
+  value: number
+  setValue: Function
+}

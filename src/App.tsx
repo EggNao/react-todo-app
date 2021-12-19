@@ -12,6 +12,7 @@ function App() {
   const [id, setId] = useState<string>('')
   const [count, setCount] = useState<number>(0)
   const [isLogin, setIsLogin] = useState<boolean>(false)
+  const [value, setValue] = useState<number>(0)
 
   useEffect(() => {
     return () => {
@@ -40,11 +41,11 @@ function App() {
             Items={Items}
             setItems={setItems}
           />
-          <Filter />
+          <Filter value={value} setValue={setValue}/>
           <TodoList Items={Items} setItems={setItems} />
         </div>
       )}
-      {isLogin === true && (
+      {isLogin === true&& (
         <div>
           <Login setIsLogin={setIsLogin} />
         </div>

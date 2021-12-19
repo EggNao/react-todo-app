@@ -6,7 +6,8 @@ export type todo = {
 }
 
 export type todoListProps = {
-  todoArray: todo[]
+  Items: todo[]
+  setItems: Function
 }
 
 export type signProps = {

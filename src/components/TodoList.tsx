@@ -30,12 +30,22 @@ const TodoList: React.FC<todoListProps> = (props) => {
     console.log(setChecked)
   }
 
+  const checkboxToggle = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    num: number
+  ) => {
+    const Item_cp = props.Items
+    Item_cp[num].done = true
+    props.setItems(Item_cp)
+    console.log(Item_cp)
+  }
+
   return (
     <List
       sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}
       style={{ margin: 'auto' }}
     >
-      {props.todoArray.map((value) => {
+      {props.Items.map((value, index) => {
         const labelId = `checkbox-list-label-${value}`
 
         return (
@@ -60,6 +70,7 @@ const TodoList: React.FC<todoListProps> = (props) => {
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ 'aria-labelledby': labelId }}
+                  onChange={(event) => checkboxToggle(event, index)}
                 />
               </ListItemIcon>
               <ListItemText

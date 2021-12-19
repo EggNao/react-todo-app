@@ -7,7 +7,6 @@ const InputTask: React.FC<inputTaskProps> = (props) => {
   const [TaskTexts, setTaskTexts] = useState<string>('')
   const onClick = () => {
     if (TaskTexts !== '') {
-
       props.setCount(props.count + 1)
       const Items_cp = props.Items
       Items_cp.push({

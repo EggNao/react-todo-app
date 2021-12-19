@@ -41,7 +41,7 @@ function App() {
             setItems={setItems}
           />
           <Filter />
-          <TodoList todoArray={Items} />
+          <TodoList Items={Items} setItems={setItems} />
         </div>
       )}
       {isLogin === true && (

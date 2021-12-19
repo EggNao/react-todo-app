@@ -12,6 +12,7 @@ function App() {
   const [id, setId] = useState<string>('')
   const [count, setCount] = useState<number>(0)
   const [isLogin, setIsLogin] = useState<boolean>(false)
+
   useEffect(() => {
     return () => {
       const auth = getAuth()
@@ -26,9 +27,10 @@ function App() {
     }
   }, [])
 
-  const page = () => {
-    if (isLogin) {
-      return (
+  return (
+    <div>
+      <Header isLogin={isLogin} setIsLogin={setIsLogin} />
+      {isLogin === false && (
         <div>
           <InputTask
             setId={setId}
@@ -41,15 +43,12 @@ function App() {
           <Filter />
           <TodoList todoArray={Items} />
         </div>
-      )
-    } else {
-      return <Login setIsLogin={setIsLogin} />
-    }
-  }
-  return (
-    <div>
-      <Header isLogin={isLogin} setIsLogin={setIsLogin} />
-      {page()}
+      )}
+      {isLogin === true && (
+        <div>
+          <Login setIsLogin={setIsLogin} />
+        </div>
+      )}
     </div>
   )
 }

@@ -16,15 +16,20 @@ const TodoList: React.FC<todoListProps> = (props) => {
 
   const handleToggle = (value: number) => () => {
     const currentIndex = checked.indexOf(value)
+    console.log(currentIndex);
+    
     const newChecked = [...checked]
+    console.log(newChecked);
+    
 
     if (currentIndex === -1) {
       newChecked.push(value)
     } else {
       newChecked.splice(currentIndex, 1)
     }
-
     setChecked(newChecked)
+    console.log(setChecked);
+    
   }
 
   return (
@@ -52,8 +57,8 @@ const TodoList: React.FC<todoListProps> = (props) => {
             >
               <ListItemIcon>
                 <Checkbox
+                  id={value.id}
                   edge="start"
-                  // checked={checked.indexOf(value.count) !== -1}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ 'aria-labelledby': labelId }}

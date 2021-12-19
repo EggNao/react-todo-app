@@ -10,14 +10,19 @@ import { todo } from './types/type'
 function App() {
   const [Items, setItems] = useState<todo[]>([])
   const [TaskTexts, setTaskTexts] = useState<string>('')
+  const [id, setId] = useState<string>('')
   const [count, setCount] = useState<number>(0)
   const [isLogin, setIsLogin] = useState<boolean>(false)
 
   const onClick = () => {
     if (TaskTexts !== '') {
+      const timeStamp = new Date().getTime().toString()
+      console.log(timeStamp);
+      
+      setId(timeStamp)
       setCount(count + 1)
       const Items_cp = Items
-      Items_cp.push({ count: count, text: TaskTexts, done: false })
+      Items_cp.push({ id: id, count: count, text: TaskTexts, done: false })
       setItems(Items_cp)
       console.log(Items)
     }

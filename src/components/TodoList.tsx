@@ -16,11 +16,10 @@ const TodoList: React.FC<todoListProps> = (props) => {
 
   const handleToggle = (value: number) => () => {
     const currentIndex = checked.indexOf(value)
-    console.log(currentIndex);
-    
+    console.log(currentIndex)
+
     const newChecked = [...checked]
-    console.log(newChecked);
-    
+    console.log(newChecked)
 
     if (currentIndex === -1) {
       newChecked.push(value)
@@ -28,8 +27,7 @@ const TodoList: React.FC<todoListProps> = (props) => {
       newChecked.splice(currentIndex, 1)
     }
     setChecked(newChecked)
-    console.log(setChecked);
-    
+    console.log(setChecked)
   }
 
   return (

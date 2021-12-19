@@ -7,14 +7,11 @@ const InputTask: React.FC<inputTaskProps> = (props) => {
   const [TaskTexts, setTaskTexts] = useState<string>('')
   const onClick = () => {
     if (TaskTexts !== '') {
-      const timeStamp = new Date().getTime().toString()
-      console.log(timeStamp)
 
-      props.setId(timeStamp)
       props.setCount(props.count + 1)
       const Items_cp = props.Items
       Items_cp.push({
-        id: props.id,
+        id: new Date().getTime().toString(),
         count: props.count,
         text: TaskTexts,
         done: false,
